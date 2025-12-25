@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кемерово 1941-1945 — О проекте</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1A1A1D;
+            --dark-gray: #4E4E50;
+            --dark-red: #6F2232;
+            --medium-red: #950740;
+            --bright-red: #C3073F;
+            --light-text: #f5f5f5;
+            --accent-gradient: linear-gradient(90deg, #C3073F 0%, #E0354F 100%);
+            --shadow-color: rgba(0, 0, 0, 0.5); 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif; 
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        /* --- Шапка --- */
+        header {
+            background-color: var(--dark-bg);
+            padding: 1rem 2rem;
+            border-bottom: 3px solid var(--bright-red);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: var(--light-text);
+        }
+        .logo span { color: var(--bright-red); }
+
+        .btn-back {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            border: 1px solid var(--bright-red);
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+        .btn-back:hover { background: var(--bright-red); }
+
+        /* --- Геройский блок --- */
+        .hero-district {
+            background: linear-gradient(rgba(26, 26, 29, 0.85), rgba(26, 26, 29, 0.95)), 
+                        url('images/about_bg.jpg') center center no-repeat;
+            background-size: cover;
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--bright-red);
+        }
+
+        .hero-district h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Контент --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .about-section {
+            background-color: var(--dark-gray);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--dark-red);
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .about-section h2 {
+            color: var(--bright-red);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--medium-red);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .about-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--bright-red);
+        }
+
+        .stat-card span {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--bright-red);
+        }
+
+        /* --- Футер --- */
+        footer {
+            background-color: var(--dark-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--bright-red);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-district h1 { font-size: 2rem; }
+            .about-section { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Кемерово <span>1941-1945</span></a>
+            <a href="index.html" class="btn-back">← На главную</a>
+        </div>
+    </header>
+
+    <section class="hero-district">
+        <h1>О проекте</h1>
+        <p>Сохраняя историю трудового подвига нашего города</p>
+    </section>
+
+    <div class="container">
+        
+        <div class="about-section">
+            <h2>Миссия проекта</h2>
+            <p>Интерактивный архив «Кемерово 1941-1945» создан для того, чтобы систематизировать и донести до будущих поколений информацию о неоценимом вкладе города в Великую Победу.</p>
+            <p>Мы объединили архивные документы, уникальные фотографии и хронику событий, чтобы каждый житель мог узнать историю своего района и предприятий, ставших опорой фронта.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Наши ресурсы</h2>
+            <p>В работе над проектом использовались материалы из государственных архивов Кузбасса, фондов краеведческих музеев и личных коллекций ветеранов труда.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span>50+</span>
+                    фотографий
+                </div>
+                <div class="stat-card">
+                    <span>20+</span>
+                    документов
+                </div>
+                <div class="stat-card">
+                    <span>5</span>
+                    районов
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section" style="border-left: 5px solid var(--bright-red);">
+            <h2>Контакты</h2>
+            <p>Если у вас есть уникальные материалы или вы нашли неточность, пожалуйста, свяжитесь с нами для пополнения архива.</p>
+            <p><strong>Email:</strong> archive@kemerovo-victory.ru</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="logo">Кемерово <span>1941-1945</span></div>
+        <p style="margin-top: 10px; opacity: 0.7;">© 2024 Историко-патриотический портал г. Кемерово</p>
+    </footer>
+
+</body>
+</html>

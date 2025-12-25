@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотоархив 1941-1945 — Кемерово</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1A1A1D;
+            --dark-gray: #4E4E50;
+            --dark-red: #6F2232;
+            --medium-red: #950740;
+            --bright-red: #C3073F;
+            --light-text: #f5f5f5;
+            --accent-gradient: linear-gradient(90deg, #C3073F 0%, #E0354F 100%);
+            --shadow-color: rgba(0, 0, 0, 0.5); 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif; 
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        /* --- Шапка (как на главной) --- */
+        header {
+            background-color: var(--dark-bg);
+            padding: 1rem 2rem;
+            border-bottom: 3px solid var(--bright-red);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: var(--light-text);
+        }
+        .logo span { color: var(--bright-red); }
+
+        .btn-back {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            border: 1px solid var(--bright-red);
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+        .btn-back:hover { background: var(--bright-red); }
+
+        /* --- Основной контейнер --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* --- Стили для секций галереи --- */
+        .gallery-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light-text);
+            border-bottom: 3px solid var(--medium-red);
+            width: fit-content;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- Стили для сетки фотографий --- */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            background-color: var(--dark-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            border: 1px solid var(--dark-gray);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px var(--shadow-color);
+            border-color: var(--bright-red);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 180px; /* Фиксированная высота для превью */
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s;
+        }
+
+        .photo-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        .photo-info {
+            padding: 1rem;
+            text-align: center;
+            flex-grow: 1; /* Чтобы текст занимал всю доступную высоту */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .photo-info h4 {
+            color: var(--bright-red);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-info p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            opacity: 0.8;
+        }
+
+        /* --- Футер --- */
+        footer {
+            background-color: var(--dark-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--bright-red);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media (max-width: 768px) {
+            .section-title { font-size: 1.8rem; }
+            .photo-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+            .photo-item img { height: 150px; }
+        }
+        @media (max-width: 480px) {
+            .section-title { font-size: 1.5rem; }
+            .photo-grid { grid-template-columns: 1fr; } /* Одна колонка на очень маленьких экранах */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Кемерово <span>1941-1945</span></a>
+            <a href="index.html" class="btn-back">← На главную</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="gallery-section">
+            <h2 class="section-title">Фотоархив 1941-1945 — по районам</h2>
+            <p style="margin-bottom: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.9;">
+                Собрание уникальных фотографий военных лет, показывающих жизнь и труд в разных районах Кемерово. 
+                Наведите курсор, чтобы увидеть цветное изображение.
+            </p>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="images/ленинский_завод1.jpg" alt="Ленинский завод">
+                    <div class="photo-info">
+                        <h4>Ленинский район</h4>
+                        <p>Завод "Химмаш", 1942 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/himmash_42.jpg" alt="Химмаш">
+                    <div class="photo-info">
+                        <h4>Ленинский район</h4>
+                        <p>Цех завода "Химмаш", 1943 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/центр_госпиталь.jpg" alt="Центральный госпиталь">
+                    <div class="photo-info">
+                        <h4>Центральный район</h4>
+                        <p>Эвакогоспиталь, 1942 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/советский_пр_43.jpg" alt="Советский проспект">
+                    <div class="photo-info">
+                        <h4>Центральный район</h4>
+                        <p>Проспект Советский, 1943 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/заводской_цех.jpg" alt="Заводской цех">
+                    <div class="photo-info">
+                        <h4>Заводский район</h4>
+                        <p>Производство снарядов, 1944 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/заводской_рабочие.jpg" alt="Рабочие Заводского">
+                    <div class="photo-info">
+                        <h4>Заводский район</h4>
+                        <p>Смена на заводе, 1943 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/кировский_коммунар.jpg" alt="Кировский Коммунар">
+                    <div class="photo-info">
+                        <h4>Кировский район</h4>
+                        <p>Завод "Коммунар", 1942 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/кировский_смена.jpg" alt="Рабочие Кировского">
+                    <div class="photo-info">
+                        <h4>Кировский район</h4>
+                        <p>Трудовая смена, 1943 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/рудник_шахта_41.jpg" alt="Рудник шахта">
+                    <div class="photo-info">
+                        <h4>Рудничный район</h4>
+                        <p>Шахта "Центральная", 1941 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/рудник_женщины.jpg" alt="Рудник женщины">
+                    <div class="photo-info">
+                        <h4>Рудничный район</h4>
+                        <p>Женщины-шахтеры, 1944 г.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-title">Фотоархив 1941-1945 — Общие кадры</h2>
+            <p style="margin-bottom: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.9;">
+                Снимки, отражающие общую атмосферу военного времени, быт горожан и вклад всего Кемерово в Победу.
+            </p>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="images/кемерово_парад_45.jpg" alt="Парад Победы">
+                    <div class="photo-info">
+                        <h4>Общий архив</h4>
+                        <p>Празднование Победы, 1945 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/кемерово_тыл_дети.jpg" alt="Дети в тылу">
+                    <div class="photo-info">
+                        <h4>Общий архив</h4>
+                        <p>Детство в годы войны, 1943 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/кемерово_урожай.jpg" alt="Сбор урожая">
+                    <div class="photo-info">
+                        <h4>Общий архив</h4>
+                        <p>Труд на полях, 1942 г.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/кемерово_солдаты.jpg" alt="Солдаты в Кемерово">
+                    <div class="photo-info">
+                        <h4>Общий архив</h4>
+                        <p>Проводы на фронт, 1941 г.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="logo">Кемерово <span>1941-1945</span></div>
+        <p style="margin-top: 10px; opacity: 0.7;">Фотоархив проекта. 2024</p>
+    </footer>
+
+</body>
+</html>

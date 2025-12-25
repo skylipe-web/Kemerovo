@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кемерово 1941-1945 — Хроника событий</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1A1A1D;
+            --dark-gray: #4E4E50;
+            --dark-red: #6F2232;
+            --medium-red: #950740;
+            --bright-red: #C3073F;
+            --light-text: #f5f5f5;
+            --shadow-color: rgba(0, 0, 0, 0.5); 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif; 
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        /* --- Шапка --- */
+        header {
+            background-color: var(--dark-bg);
+            padding: 1rem 2rem;
+            border-bottom: 3px solid var(--bright-red);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: var(--light-text);
+        }
+        .logo span { color: var(--bright-red); }
+
+        .btn-back {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            border: 1px solid var(--bright-red);
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+        .btn-back:hover { background: var(--bright-red); }
+
+        /* --- Геройский блок --- */
+        .hero-district {
+            background: linear-gradient(rgba(26, 26, 29, 0.85), rgba(26, 26, 29, 0.95)), 
+                        url('images/chronicle_bg.jpg') center center no-repeat;
+            background-size: cover;
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--bright-red);
+        }
+
+        .hero-district h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Таймлайн (Лента времени) --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        /* Центральная линия */
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--medium-red);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        /* Точки на линии */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--dark-bg);
+            border: 4px solid var(--bright-red);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+
+        .right::after { left: -10px; }
+
+        .content {
+            padding: 20px;
+            background-color: var(--dark-gray);
+            position: relative;
+            border-radius: 10px;
+            border: 1px solid var(--dark-red);
+            transition: 0.3s;
+        }
+
+        .content:hover {
+            border-color: var(--bright-red);
+            transform: scale(1.02);
+        }
+
+        .content h2 {
+            color: var(--bright-red);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        /* Футер */
+        footer {
+            background-color: var(--dark-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--bright-red);
+            margin-top: 4rem;
+        }
+
+        /* Адаптивность для мобильных */
+        @media screen and (max-width: 600px) {
+            .container::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .right { left: 0%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Кемерово <span>1941-1945</span></a>
+            <a href="index.html" class="btn-back">← На главную</a>
+        </div>
+    </header>
+
+    <section class="hero-district">
+        <h1>Хроника войны</h1>
+        <p>Основные этапы жизни города в 1941–1945 годах</p>
+    </section>
+
+    <div class="container">
+        
+        <div class="timeline-item left">
+            <div class="content">
+                <h2>Июнь – Октябрь 1941</h2>
+                <h3>Мобилизация и первые эшелоны</h3>
+                <p>Перевод промышленности на военные рельсы. В город начинают прибывать первые эвакуированные заводы из центральных районов СССР.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <div class="content">
+                <h2>1942 год</h2>
+                <h3>Город-арсенал</h3>
+                <p>Запуск завода «Химмаш» и расширение производства пороха на «Коммунаре». Кемерово становится ключевым поставщиком боеприпасов.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left">
+            <div class="content">
+                <h2>Январь 1943</h2>
+                <h3>Создание Кемеровской области</h3>
+                <p>Указом Президиума Верховного Совета СССР выделена Кемеровская область. Город получает статус областного центра.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <div class="content">
+                <h2>1944 год</h2>
+                <h3>Трудовой рекорд</h3>
+                <p>Шахтеры Кемеровского рудника выдают рекордные нормы угля. В госпитали города поступает максимальное число раненых.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left">
+            <div class="content">
+                <h2>Май 1945</h2>
+                <h3>Победа!</h3>
+                <p>9 мая — митинг на площади Советов. Кемеровчане празднуют окончание войны, внеся неоценимый вклад в разгром врага.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="logo">Кемерово <span>1941-1945</span></div>
+        <p style="margin-top: 10px; opacity: 0.7;">Летопись трудового подвига. 2024</p>
+    </footer>
+
+</body>
+</html>
