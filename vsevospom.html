@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кемерово 1941-1945 — Воспоминания свидетелей</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
             --dark-bg: #1A1A1D;
-            --dark-gray: #4E4E50;
+            --dark-gray: #2D2D30;
             --dark-red: #6F2232;
             --medium-red: #950740;
             --bright-red: #C3073F;
             --light-text: #f5f5f5;
-            --accent-gradient: linear-gradient(90deg, #C3073F 0%, #E0354F 100%);
-            --shadow-color: rgba(0, 0, 0, 0.5); 
+            --paper-effect: rgba(255, 255, 255, 0.03);
         }
 
         * {
@@ -28,14 +27,13 @@
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.6;
+            background-image: radial-gradient(circle at center, #222 0%, #1A1A1D 100%);
         }
 
-        /* --- Шапка --- */
         header {
             background-color: var(--dark-bg);
             padding: 1rem 2rem;
             border-bottom: 3px solid var(--bright-red);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -52,7 +50,6 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
             text-decoration: none;
             color: var(--light-text);
         }
@@ -62,122 +59,152 @@
             color: var(--light-text);
             text-decoration: none;
             font-weight: 700;
-            transition: 0.3s;
             border: 1px solid var(--bright-red);
             padding: 5px 15px;
             border-radius: 4px;
+            transition: 0.3s;
         }
         .btn-back:hover { background: var(--bright-red); }
 
-        /* --- Геройский блок --- */
-        .hero-district {
-            background: linear-gradient(rgba(26, 26, 29, 0.85), rgba(26, 26, 29, 0.95)), 
+        /* --- Hero --- */
+        .hero-vospom {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
                         url('images/vospom_bg.jpg') center center no-repeat;
             background-size: cover;
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             text-align: center;
             border-bottom: 5px solid var(--bright-red);
         }
 
-        .hero-district h1 {
-            font-size: 3rem;
+        .hero-vospom h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
             text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+            letter-spacing: 5px;
             margin-bottom: 1rem;
         }
 
-        /* --- Контент --- */
+        /* --- Основная сетка --- */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--light-text);
-            font-size: 2.2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 3px solid var(--medium-red);
-            width: fit-content;
-            margin: 0 auto 3rem;
-            padding-bottom: 0.5rem;
+            padding: 4rem 2rem;
         }
 
         .vospom-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
         }
 
         .vospom-card {
-            background-color: var(--dark-gray);
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid var(--dark-red);
+            background: var(--dark-gray);
+            padding: 40px;
+            border-radius: 4px;
+            border-left: 4px solid var(--bright-red);
             position: relative;
-            transition: 0.3s;
+            overflow: hidden;
+            transition: 0.4s;
             display: flex;
             flex-direction: column;
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
         }
 
         .vospom-card:hover {
-            border-color: var(--bright-red);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow-color);
+            transform: scale(1.02);
+            background: #353538;
         }
 
-        /* Декоративная кавычка */
-        .vospom-card::before {
+        /* Декоративный символ цитаты */
+        .vospom-card::after {
             content: "“";
             position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 5rem;
+            top: -10px;
+            right: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 10rem;
             color: var(--bright-red);
-            opacity: 0.3;
-            font-family: serif;
+            opacity: 0.1;
         }
 
-        .vospom-text {
+        .quote-text {
+            font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #ddd;
+            margin-bottom: 30px;
             position: relative;
             z-index: 1;
-            color: #e0e0e0;
         }
 
-        .vospom-author {
+        .author-info {
             margin-top: auto;
-            border-top: 1px solid var(--medium-red);
-            padding-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
         }
 
-        .vospom-author h4 {
+        .author-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--bright-red);
+            filter: grayscale(100%);
+        }
+
+        .author-name {
+            font-weight: 700;
             color: var(--bright-red);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            display: block;
         }
 
-        .vospom-author p {
-            font-size: 0.9rem;
-            opacity: 0.7;
+        .author-desc {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
+        /* Блок призыва к действию */
+        .submit-vospom {
+            margin-top: 5rem;
+            background: linear-gradient(45deg, var(--dark-red), var(--medium-red));
+            padding: 4rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .submit-vospom h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .submit-vospom p { max-width: 600px; margin: 0 auto 2rem; }
+        
+        .btn-action {
+            display: inline-block;
+            background: var(--light-text);
+            color: var(--dark-red);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .btn-action:hover { background: var(--bright-red); color: white; }
 
         footer {
-            background-color: var(--dark-bg);
+            background-color: #111;
             padding: 3rem 2rem;
             text-align: center;
             border-top: 3px solid var(--bright-red);
-            margin-top: 4rem;
         }
 
         @media (max-width: 768px) {
-            .hero-district h1 { font-size: 2rem; }
             .vospom-grid { grid-template-columns: 1fr; }
+            .vospom-card { padding: 25px; }
+            .submit-vospom { padding: 2rem; }
         }
     </style>
 </head>
@@ -190,62 +217,78 @@
         </div>
     </header>
 
-    <section class="hero-district">
-        <h1>Живые голоса</h1>
-        <p>Воспоминания кемеровчан о жизни и труде в военные годы</p>
+    <section class="hero-vospom">
+        <h1>Живые голоса Победы</h1>
+        <p>Архив личных историй, запечатлевших эпоху великого подвига</p>
     </section>
 
     <div class="container">
         
-        <h2 class="section-title">Голоса памяти</h2>
-
         <div class="vospom-grid">
             <div class="vospom-card">
-                <div class="vospom-text">
-                    «Мы работали по 12 часов, а иногда и больше. Помню, как в цехе было холодно, но никто не жаловался. Мы знали: наши снаряды нужны там, на передовой. Каждая смена была как бой».
+                <div class="quote-text">
+                    «Помню, как в 1941-м мне было всего двенадцать. Мы с ребятами собирали металлолом для заводов. Взрослые работали сутками, а мы старались помочь хоть чем-то. Зимой было особенно трудно — дров не хватало, грелись у заводских труб. Но мы знали одно: город работает для фронта».
                 </div>
-                <div class="vospom-author">
-                    <h4>Мария Степановна Иванова</h4>
-                    <p>Рабочая завода №606, 1942–1945 гг.</p>
-                </div>
-            </div>
-
-            <div class="vospom-card">
-                <div class="vospom-text">
-                    «Хлебные карточки были самым ценным, что у нас было. Помню радость, когда завод выдал дополнительный паек за перевыполнение плана. Это была настоящая победа в тылу».
-                </div>
-                <div class="vospom-author">
-                    <h4>Алексей Петрович Кузнецов</h4>
-                    <p>Мастер смены Кемеровского ГРЭС</p>
+                <div class="author-info">
+                    <img src="images/avatar1.jpg" alt="Фото свидетеля">
+                    <div>
+                        <span class="author-name">Николай Сергеевич Волков</span>
+                        <span class="author-desc">Житель Кемерово, в годы войны — школьник</span>
+                    </div>
                 </div>
             </div>
 
             <div class="vospom-card">
-                <div class="vospom-text">
-                    «В госпиталь привозили раненых прямо с вокзала. Мы, девчонки, бегали туда после школы: помогали писать письма домой, читали газеты. Раненые называли нас сестренками...»
+                <div class="quote-text">
+                    «На заводе "Азот" мы производили компоненты для взрывчатки. Смены по 14 часов стали нормой. Иногда сил дойти до дома не было — спали прямо в цеху на ящиках. Но когда приходили сводки с фронта, открывалось второе дыхание. Мы понимали: каждый грамм пороха — это шаг к миру».
                 </div>
-                <div class="vospom-author">
-                    <h4>Елена Викторовна Смирнова</h4>
-                    <p>Волонтер эвакогоспиталя, Центральный район</p>
+                <div class="author-info">
+                    <img src="images/avatar2.jpg" alt="Фото свидетеля">
+                    <div>
+                        <span class="author-name">Татьяна Андреевна Котова</span>
+                        <span class="author-desc">Ветеран труда, работница оборонного завода</span>
+                    </div>
                 </div>
             </div>
 
             <div class="vospom-card">
-                <div class="vospom-text">
-                    «Шахта стала нашим вторым домом. Когда мужчины ушли на фронт, мы спустились в забой. Было страшно, трудно дышать, но уголь был нужен заводам. Мы не имели права подвести».
+                <div class="quote-text">
+                    «Я работала санитаркой в госпитале на улице Советской. Самое тяжелое — это глаза раненых ребят, которые были младше меня. Мы не просто перевязывали раны, мы пели им песни, читали письма от родных. Мы были их связью с домом, их надеждой на то, что жизнь продолжается».
                 </div>
-                <div class="vospom-author">
-                    <h4>Анна Федоровна Белова</h4>
-                    <p>Шахтер шахты "Центральная", Рудничный район</p>
+                <div class="author-info">
+                    <img src="images/avatar3.jpg" alt="Фото свидетеля">
+                    <div>
+                        <span class="author-name">Мария Григорьевна Лебедева</span>
+                        <span class="author-desc">Медсестра эвакогоспиталя №1246</span>
+                    </div>
                 </div>
             </div>
+
+            <div class="vospom-card">
+                <div class="quote-text">
+                    «В шахту я спустилась в 1943 году. Мужчины ушли на фронт, и забой стал женским делом. Было ли страшно? Конечно. Под землей не видишь солнца, только угольная пыль и свет фонаря. Но когда мы выдавали двойную норму, на душе становилось светло — мы знали, что наш уголь согревает страну».
+                </div>
+                <div class="author-info">
+                    <img src="images/avatar4.jpg" alt="Фото свидетеля">
+                    <div>
+                        <span class="author-name">Анна Ивановна Петрова</span>
+                        <span class="author-desc">Почетный горняк, шахта «Центральная»</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-vospom">
+            <h2>Ваша семейная история важна</h2>
+            <p>Если в вашей семье сохранились письма с фронта или воспоминания родных, работавших в Кемерово в годы войны, поделитесь ими с нами для пополнения архива.</p>
+            <a href="mailto:archive@kemerovo1945.ru" class="btn-action">Написать в архив</a>
         </div>
 
     </div>
 
     <footer>
         <div class="logo">Кемерово <span>1941-1945</span></div>
-        <p style="margin-top: 10px; opacity: 0.7;">Живая память поколений. 2024</p>
+        <p style="margin-top: 15px; opacity: 0.6;">Проект «Живая память Кузбасса». Все права защищены. 2025</p>
     </footer>
 
 </body>

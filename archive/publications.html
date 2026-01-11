@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кемерово 1941-1945 — Публикации и статьи</title>
+    <title>Кемерово 1941-1945 — Библиотека ресурсов</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-bg: #1A1A1D;
-            --dark-gray: #4E4E50;
-            --dark-red: #6F2232;
-            --medium-red: #950740;
-            --bright-red: #C3073F;
-            --light-text: #f5f5f5;
-            --shadow-color: rgba(0, 0, 0, 0.5); 
+            --dark-bg: #121214;
+            --card-bg: #1E1E21;
+            --accent-red: #C3073F;
+            --hover-red: #950740;
+            --text-main: #f5f5f5;
+            --text-dim: #b0b0b0;
         }
 
         * {
@@ -25,153 +24,178 @@
 
         body {
             background-color: var(--dark-bg);
-            color: var(--light-text);
-            line-height: 1.6;
+            color: var(--text-main);
+            line-height: 1.5;
+            overflow-x: hidden;
         }
 
         /* --- Шапка --- */
         header {
-            background-color: var(--dark-bg);
-            padding: 1rem 2rem;
-            border-bottom: 3px solid var(--bright-red);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            background-color: rgba(18, 18, 20, 0.95);
+            padding: 1.2rem 2rem;
+            border-bottom: 2px solid var(--accent-red);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            letter-spacing: 1px;
             text-decoration: none;
-            color: var(--light-text);
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .logo span { color: var(--bright-red); }
+        .logo span { color: var(--accent-red); }
 
         .btn-back {
-            color: var(--light-text);
+            color: var(--text-main);
             text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 700;
+            border: 1px solid var(--accent-red);
+            padding: 8px 20px;
+            border-radius: 50px;
             transition: 0.3s;
-            border: 1px solid var(--bright-red);
-            padding: 5px 15px;
-            border-radius: 4px;
         }
-        .btn-back:hover { background: var(--bright-red); }
+        .btn-back:hover { background: var(--accent-red); box-shadow: 0 0 15px rgba(195, 7, 63, 0.4); }
 
-        /* --- Геройский блок --- */
-        .hero-district {
-            background: linear-gradient(rgba(26, 26, 29, 0.85), rgba(26, 26, 29, 0.95)), 
-                        url('images/pub_hero_bg.jpg') center center no-repeat;
-            background-size: cover;
-            padding: 5rem 2rem;
+        /* --- Hero --- */
+        .hero {
+            padding: 6rem 2rem 4rem;
             text-align: center;
-            border-bottom: 5px solid var(--bright-red);
+            background: radial-gradient(circle at center, #2a0a10 0%, #121214 100%);
         }
 
-        .hero-district h1 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 1rem;
-        }
-
-        /* --- Список публикаций --- */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--light-text);
-            font-size: 2.2rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 3px solid var(--medium-red);
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 0.5rem;
+            letter-spacing: 5px;
         }
 
-        .article-card {
-            background-color: var(--dark-gray);
-            border-radius: 12px;
+        .hero p {
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Сетка карточек --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
             padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border-left: 5px solid var(--bright-red);
-            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
 
-        .article-card:hover {
-            transform: translateX(10px);
-            background-color: #5a5a5c;
-        }
-
-        .article-meta {
-            color: var(--bright-red);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .article-card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .article-card p {
-            color: #e0e0e0;
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        .btn-read {
-            display: inline-block;
-            color: var(--light-text);
-            text-decoration: none;
-            font-weight: 700;
-            border-bottom: 2px solid var(--bright-red);
-            padding-bottom: 2px;
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--accent-red);
             transition: 0.3s;
         }
 
-        .btn-read:hover {
-            color: var(--bright-red);
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(195, 7, 63, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #252529;
+        }
+
+        .card:hover::before {
+            width: 8px;
+        }
+
+        .card-meta {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
             letter-spacing: 1px;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .card-link:hover {
+            color: var(--accent-red);
+        }
+
+        .card-link i {
+            font-style: normal;
+            transition: 0.3s;
+        }
+
+        .card:hover .card-link i {
+            transform: translateX(5px);
         }
 
         /* --- Футер --- */
         footer {
-            background-color: var(--dark-bg);
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
+            background: #0a0a0b;
             text-align: center;
-            border-top: 3px solid var(--bright-red);
-            margin-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         @media (max-width: 768px) {
-            .hero-district h1 { font-size: 2rem; }
-            .article-card { padding: 1.5rem; }
-            .article-card h2 { font-size: 1.4rem; }
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            .container { padding: 0 1.5rem; }
         }
     </style>
 </head>
@@ -179,46 +203,106 @@
 
     <header>
         <div class="header-content">
-            <a href="index.html" class="logo">Кемерово <span>1941-1945</span></a>
-            <a href="index.html" class="btn-back">← На главную</a>
+            <a href="../index.html" class="logo">Кемерово <span>1941-1945</span></a>
+            <a href="../index.html" class="btn-back">← На главную</a>
         </div>
     </header>
 
-    <section class="hero-district">
-        <h1>Публикации</h1>
-        <p>Статьи, очерки и научные работы об истории города в годы войны</p>
+    <section class="hero">
+        <h1>Архив Знаний</h1>
+        <p>Собрание внешних ресурсов, научных работ и краеведческих очерков о сердце Кузбасса.</p>
     </section>
 
     <div class="container">
-        
-        <h2 class="section-title">Статьи и очерки</h2>
+        <div class="resources-grid">
+            
+            <div class="card">
+                <div>
+                    <span class="card-meta">kemhistory.ru</span>
+                    <h2>Шепот веков: очерки забытых страниц Кемерово</h2>
+                    <p>Исторические очерки о Кемерово и селах Кузбасса. Уникальные материалы по истории становления города.</p>
+                </div>
+                <a href="https://kemhistory.ru" target="_blank" class="card-link">Перейти к материалам <i>→</i></a>
+            </div>
 
-        <article class="article-card">
-            <span class="article-meta">Исторический очерк • 2024</span>
-            <h2>Подвиг химиков: как рождался кемеровский порох</h2>
-            <p>Подробное исследование работы завода №319 в первые годы войны. Воспоминания инженеров и мастеров, которые внедряли новые технологии производства в условиях дефицита сырья.</p>
-            <a href="#" class="btn-read">Читать статью полностью →</a>
-        </article>
+            <div class="card">
+                <div>
+                    <span class="card-meta">depкульт.рф</span>
+                    <h2>Огни Кузбасса: пламя слов в сердце Сибири</h2>
+                    <p>История легендарного журнала и крупнейшие культурные проекты региона в лицах и фактах.</p>
+                </div>
+                <a href="https://xn----8sbenbrquebb4afq7e.xn--p1ai" target="_blank" class="card-link">Читать онлайн <i>→</i></a>
+            </div>
 
-        <article class="article-card">
-            <span class="article-meta">Мемуары • Архивные записи</span>
-            <h2>Детство у станка: воспоминания подростков 40-х</h2>
-            <p>Сборник коротких рассказов кемеровчан, чье детство прошло в цехах «Химмаша» и «Карболита». О быте, нормах выработки и первой радости в день Победы.</p>
-            <a href="#" class="btn-read">Читать статью полностью →</a>
-        </article>
+            <div class="card">
+                <div>
+                    <span class="card-meta">litmap.kemrsl.ru</span>
+                    <h2>Литературный пульс Кузбасса: Кемерово среди страниц</h2>
+                    <p>Интерактивный путеводитель по именам и судьбам писателей, чьи строки посвящены родному городу.</p>
+                </div>
+                <a href="http://litmap.kemrsl.ru" target="_blank" class="card-link">Исследовать карту <i>→</i></a>
+            </div>
 
-        <article class="article-card">
-            <span class="article-meta">Исследование • Экономика тыла</span>
-            <h2>Кузбасс — сердце сибирской индустрии</h2>
-            <p>Аналитическая работа о том, как эвакуация предприятий в Кемерово изменила промышленную карту региона и заложила фундамент для послевоенного развития города.</p>
-            <a href="#" class="btn-read">Читать статью полностью →</a>
-        </article>
+            <div class="card">
+                <div>
+                    <span class="card-meta">kemrsl.ru</span>
+                    <h2>Кемерово между строками краеведов</h2>
+                    <p>Профессиональный взгляд на историю края в официальном разделе Краеведения ГНБК.</p>
+                </div>
+                <a href="https://kemrsl.ru/kraevedenie/" target="_blank" class="card-link">В раздел библиотеки <i>→</i></a>
+            </div>
 
+            <div class="card">
+                <div>
+                    <span class="card-meta">old.kemrsl.ru</span>
+                    <h2>Краеведческий компас: электронные тропы</h2>
+                    <p>Цифровые копии редких документов и коллекций, доступные в электронном каталоге.</p>
+                </div>
+                <a href="http://old.kemrsl.ru/catalog/4889.html" target="_blank" class="card-link">Открыть каталог <i>→</i></a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="card-meta">Архив (PDF)</span>
+                    <h2>Рождение города: Кемерово в отражении времени</h2>
+                    <p>Глубокое исследование этапов развития города от первых поселений до индустриального центра.</p>
+                </div>
+                <a href="https://arhiv42.ru/pictures/20160524121435rojdenie.pdf" target="_blank" class="card-link">Изучить документ <i>→</i></a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="card-meta">library.gorobr.ru</span>
+                    <h2>Город на угольной жиле: индустриальные очерки</h2>
+                    <p>История промышленного гиганта: как уголь и труд строили современное Кемерово.</p>
+                </div>
+                <a href="http://www.library.gorobr.ru/?view=content&id=29930" target="_blank" class="card-link">Читать книгу <i>→</i></a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="card-meta">Обзор (DOC)</span>
+                    <h2>Библиотеки онлайн: навигатор по очеркам</h2>
+                    <p>Единый реестр онлайн-ресурсов библиотек города для тех, кто ищет проверенные данные.</p>
+                </div>
+                <a href="http://kraslib.ru/doc/photoreports/47_1.doc" target="_blank" class="card-link">Скачать навигатор <i>→</i></a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="card-meta">Сборник КемГИК</span>
+                    <h2>Культурный силуэт Кемерово: искусство столицы</h2>
+                    <p>Научный подход к изучению художественной и театральной жизни кузбасской столицы.</p>
+                </div>
+                <a href="http://ebooks.kemgik.ru/avt/LEONOV2.pdf" target="_blank" class="card-link">Открыть сборник <i>→</i></a>
+            </div>
+
+        </div>
     </div>
 
     <footer>
         <div class="logo">Кемерово <span>1941-1945</span></div>
-        <p style="margin-top: 10px; opacity: 0.7;">Информационный архив проекта. 2024</p>
+        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.8rem;">Проект памяти и истории города. 2026</p>
     </footer>
 
 </body>

@@ -14,14 +14,14 @@
             --bright-red: #C3073F;
             --light-text: #f5f5f5;
             --accent-gradient: linear-gradient(90deg, #C3073F 0%, #E0354F 100%);
-            --shadow-color: rgba(0, 0, 0, 0.5); 
+            --shadow-color: rgba(0, 0, 0, 0.5);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', sans-serif;
         }
 
         body {
@@ -59,6 +59,8 @@
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: 2px;
+            text-decoration: none;
+            color: var(--light-text);
         }
         .logo span {
             color: var(--bright-red);
@@ -104,7 +106,7 @@
 
         /* --- Геройский блок --- */
         .hero {
-            background: linear-gradient(rgba(26, 26, 29, 0.8), rgba(26, 26, 29, 0.95)), 
+            background: linear-gradient(rgba(26, 26, 29, 0.8), rgba(26, 26, 29, 0.95)),
                         url('images/kemerovo_war_hero.jpg') center center no-repeat;
             background-size: cover;
             padding: 6rem 2rem;
@@ -174,79 +176,76 @@
             margin-right: auto;
         }
 
-        /* --- Районы --- */
+        /* --- ОБНОВЛЕННЫЕ РАЙОНЫ (Z-PATTERN) --- */
         .districts {
             padding: 4rem 2rem;
             background-color: var(--dark-gray);
         }
 
-        .district-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+        .district-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .district-card {
-            background-color: var(--dark-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid var(--dark-red);
+        .district-item {
             display: flex;
-            flex-direction: column;
+            align-items: stretch;
+            background-color: var(--dark-bg);
+            border-radius: 12px;
+            overflow: hidden;
             text-decoration: none;
+            color: var(--light-text);
+            border: 1px solid var(--dark-red);
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        .district-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 30px var(--shadow-color);
+        .district-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .district-item:hover {
             border-color: var(--bright-red);
+            transform: translateY(-5px);
         }
-        
-        .district-img {
-            height: 220px;
-            overflow: hidden; 
-            border-bottom: 2px solid var(--bright-red);
+
+        .district-item-img {
+            flex: 1;
+            min-height: 350px;
+            overflow: hidden;
         }
-        
-        .district-img img {
+
+        .district-item-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
-        
-        .district-card:hover .district-img img {
-             transform: scale(1.05);
-        }
 
-        .district-content {
-            padding: 1.5rem;
-            flex-grow: 1;
+        .district-item-content {
+            flex: 1;
+            padding: 3rem;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
 
-        .district-content h3 {
+        .district-item-content h3 {
             color: var(--bright-red);
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-        }
-
-        .district-content p {
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--light-text);
-            flex-grow: 1;
+            text-transform: uppercase;
         }
 
-        .district-content .btn-container {
-            margin-top: auto;
-            display: flex;
-            justify-content: flex-end; 
+        .district-item-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
-        
+
         /* --- Архив --- */
         .archive {
             padding: 4rem 2rem;
@@ -329,7 +328,7 @@
             margin-bottom: 1rem;
             font-size: 1.4rem;
         }
-
+        
         .witness-card p {
             font-style: italic;
             margin-bottom: 1rem;
@@ -374,9 +373,11 @@
             color: var(--bright-red);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .hero h1 { font-size: 2.2rem; }
-            .district-grid, .archive-grid { grid-template-columns: 1fr; }
+            .district-item, .district-item:nth-child(even) { flex-direction: column; }
+            .district-item-img { min-height: 200px; }
+            .archive-grid { grid-template-columns: 1fr; }
             .header-content { flex-direction: column; align-items: flex-start; }
             nav ul { margin-top: 1rem; }
             nav li { margin-left: 0; margin-right: 1rem; }
@@ -393,7 +394,6 @@
                     <li><a href="#archive">Архив</a></li>
                     <li><a href="#witnesses">Воспоминания</a></li>
                     <li><a href="about.html">О проекте</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
                 </ul>
             </nav>
         </div>
@@ -408,70 +408,60 @@
 
     <section class="districts" id="districts">
         <h2 class="section-title">Районы Кемерово в годы войны</h2>
-        <div class="district-grid">
-            
-            <a href="zavodskiy.html" class="district-card">
-                <div class="district-img">
-                    <img src="images/заводской гл.jpg" alt="Промышленный центр">
+        
+        <div class="district-list">
+            <a href="zavodskiy.html" class="district-item">
+                <div class="district-item-img">
+                    <img src="images/заводской гл.jpg" alt="Заводской район">
                 </div>
-                <div class="district-content">
+                <div class="district-item-content">
                     <h3>Заводской район</h3>
                     <p>Промышленный центр города, где работали эвакуированные заводы, производившие военную продукцию для фронта.</p>
-                    <div class="btn-container">
-                        <span class="btn">Подробнее</span>
-                    </div>
+                    <span class="btn" style="width: fit-content;">Подробнее</span>
                 </div>
             </a>
-
-            <a href="kirovskiy.html" class="district-card">
-                <div class="district-img">
-                    <img src="images/кировский гл.jpg" alt="Медицинская помощь">
+    
+            <a href="kirovskiy.html" class="district-item">
+                <div class="district-item-img">
+                    <img src="images/кировский гл.jpg" alt="Кировский район">
                 </div>
-                <div class="district-content">
+                <div class="district-item-content">
                     <h3>Кировский район</h3>
-                    <p>Центр медицинской помощи (госпитали для раненых бойцов) и крупный оборонный комплекс.</p>
-                    <div class="btn-container">
-                        <span class="btn">Подробнее</span>
-                    </div>
+                    <p>Центр медицинской помощи и крупный оборонный комплекс. Здесь размещались важнейшие госпитали для раненых бойцов.</p>
+                    <span class="btn" style="width: fit-content;">Подробнее</span>
                 </div>
             </a>
-
-            <a href="leninskiy.html" class="district-card">
-                <div class="district-img">
-                    <img src="images/ленинский гл.jpg" alt="Железная дорога">
+    
+            <a href="leninskiy.html" class="district-item">
+                <div class="district-item-img">
+                    <img src="images/ленинский гл.jpg" alt="Ленинский район">
                 </div>
-                <div class="district-content">
+                <div class="district-item-content">
                     <h3>Ленинский район</h3>
-                    <p>Важнейший железнодорожный узел, через который проходили эшелоны с эвакуированными и военными грузами.</p>
-                    <div class="btn-container">
-                        <span class="btn">Подробнее</span>
-                    </div>
+                    <p>Важнейший железнодорожный узел, через который круглосуточно проходили эшелоны с военными грузами.</p>
+                    <span class="btn" style="width: fit-content;">Подробнее</span>
                 </div>
             </a>
-
-            <a href="rudnichniy.html" class="district-card">
-                <div class="district-img">
-                    <img src="images/рудничный гл.png" alt="Угольная промышленность">
+    
+            <a href="rudnichniy.html" class="district-item">
+                <div class="district-item-img">
+                    <img src="images/рудничный гл.png" alt="Рудничный район">
                 </div>
-                <div class="district-content">
+                <div class="district-item-content">
                     <h3>Рудничный район</h3>
-                    <p>Угледобывающий район, обеспечивавший топливом промышленность и железнодорожный транспорт.</p>
-                    <div class="btn-container">
-                        <span class="btn">Подробнее</span>
-                    </div>
+                    <p>Угледобывающее сердце Кузбасса, обеспечивавшее топливом всю промышленность региона и транспорт страны.</p>
+                    <span class="btn" style="width: fit-content;">Подробнее</span>
                 </div>
             </a>
-
-            <a href="centralniy.html" class="district-card">
-                <div class="district-img">
-                    <img src="images/центральный гл.jpg" alt="Центр города">
+    
+            <a href="centralniy.html" class="district-item">
+                <div class="district-item-img">
+                    <img src="images/центральный гл.jpg" alt="Центральный район">
                 </div>
-                <div class="district-content">
+                <div class="district-item-content">
                     <h3>Центральный район</h3>
-                    <p>Административный центр, где размещались руководящие органы, штабы и эвакуационные пункты.</p>
-                    <div class="btn-container">
-                        <span class="btn">Подробнее</span>
-                    </div>
+                    <p>Административный центр, координировавший работу всех предприятий и принимавший ключевые решения военного времени.</p>
+                    <span class="btn" style="width: fit-content;">Подробнее</span>
                 </div>
             </a>
         </div>
@@ -498,20 +488,20 @@
                 </div>
             </a>
 
-            <a href="archive/chronicles.html" class="archive-card">
-                <div class="archive-img"><img src="images/archive_chronicles.jpg" alt="Кинохроника"></div>
+            <a href="archive/chronicle.html" class="archive-card">
+                <div class="archive-img"><img src="images/кинохроника гл.jpg" alt="Кинохроника"></div>
                 <div class="archive-content">
                     <h3>Кинохроника</h3>
                     <p>Кадры, запечатлевшие жизнь города в годы войны.</p>
                     <span class="btn">Смотреть</span>
                 </div>
             </a>
-
+            
             <a href="archive/publications.html" class="archive-card">
                 <div class="archive-img"><img src="images/публикации гл.jpg" alt="Газеты"></div>
                 <div class="archive-content">
                     <h3>Публикации</h3>
-                    <p>Газеты и книги из фондов библиотек.</p>
+                    <p>Статьи из газет «Кузбасс» за 1941-1945 гг.</p>
                     <span class="btn">Читать</span>
                 </div>
             </a>
@@ -519,40 +509,42 @@
     </section>
 
     <section class="witnesses" id="witnesses">
-        <h2 class="section-title">Воспоминания очевидцев</h2>
-
-        <div class="witness-card">
-            <h3>Анна Белоногова (с. Берёзово)</h3>
-            <p>"Работали по 12 часов, менялись сменами день/ночь. После войны отец вернулся раненым. Продолжала работать трактористкой, потом на молоканке и в магазине 30 лет. Не было даже вёдер — продавали молоко на базаре пешком. Сыграли свадьбу, вырастили двоих детей."</p>
-            <div class="witness-meta">Кемеровский район, труженица тыла</div>
-        </div>
-
-        <div class="witness-card">
-            <h3>Нина Сидорова (Заводский район)</h3>
-            <p>«Эвакуированные из Украины, трудилась на кирпичном заводе: месили глину вручную, сушили на воздухе. Барак без света, по вечерам читали при луне; отец раненый вернулся в 1946-м. Гордилась сбором на танк: сшили 1000 пар валенок, собрали 300 млн рублей на самолёты»</p>
-            <div class="witness-meta">Кировский район, военный врач</div>
-        </div>
-
-        <div class="witness-card">
-            <h3>Лидия Ивановна (Рудничный район)</h3>
-            <p>«Работала на шахте с 16 лет, отец не вернулся с фронта. Жили в саманной избе Щетинкиного лога: зимой стены в инее, топили дровами из леса. По утрам город пустой — мужчины контуженные, женщины на заводы; базар напротив церкви гудел, меняли картошку на соль, но танцевали в праздники под гармошку»</p>
-            <div class="witness-meta">Рудничный район, труженица тыла</div>
-        </div>
-
-        <a href="vsevospom.html" class="btn" style="display: block; width: fit-content; margin: 2rem auto 0 auto;">Все воспоминания</a>
-    </section>
-
-    <footer id="contacts">
-        <div class="footer-content">
-            <div class="footer-logo">Кемерово <span>1941-1945</span></div>
-            <p>Сайт создан для сохранения памяти о вкладе кемеровчан в Победу</p>
-            <div class="footer-links">
-                <a href="#districts">Районы</a>
-                <a href="#archive">Архив</a>
-                <a href="#witnesses">Воспоминания</a>
-                <a href="about.html">О проекте</a>
+        <h2 class="section-title">Воспоминания</h2>
+        <div class="container" style="padding: 0;">
+            <div class="witness-card">
+                <h3>Вера Петровна Костянкина</h3>
+                <p>"После войны жила в Кемерове 74 года, работала на заводах непрерывно. Семья ютилась в бараке у коксохима..."</p>
+                <div class="witness-meta">Труженица тыла</div>
             </div>
         </div>
+
+        <div class="container" style="padding: 0;">
+            <div class="witness-card">
+                <h3>Лидия Ивановна</h3>
+                <p>"Работала на шахте с 16 лет, отец не вернулся с фронта. Жили в саманной избе Щетинкиного лога..."</p>
+                <div class="witness-meta">Труженица тыла</div>
+            </div>
+        </div>
+
+        <div class="container" style="padding: 0;">
+            <div class="witness-card">
+                <h3>Нина Сидорова</h3>
+                <p>"Эвакуированные из Украины, трудилась на кирпичном заводе: месили глину вручную, сушили на воздухе..."</p>
+                <div class="witness-meta">Труженица тыла</div>
+            </div>
+            <a href="vsevospom.html" class="btn" style="display: block; width: fit-content; margin: 2rem auto;">Все воспоминания</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Кемерово <span>1941-1945</span></div>
+        <p>Сайт создан для сохранения памяти о вкладе кемеровчан в Победу</p>
+        <div class="footer-links">
+            <a href="index.html">Главная</a>
+            <a href="about.html">О проекте</a>
+            <a href="archive/index.html">Архив</a>
+        </div>
+        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 1rem;">&copy; 2026 Архив памяти г. Кемерово</p>
     </footer>
 </body>
 </html>

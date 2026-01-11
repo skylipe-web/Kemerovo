@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Центральный район 1941-1945 — Административный центр</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Центральный район 1941-1945 — Сердце тыла</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --dark-bg: #1A1A1D;
@@ -13,8 +13,6 @@
             --medium-red: #950740;
             --bright-red: #C3073F;
             --light-text: #f5f5f5;
-            --accent-gradient: linear-gradient(90deg, #C3073F 0%, #E0354F 100%);
-            --shadow-color: rgba(0, 0, 0, 0.5); 
         }
 
         * {
@@ -34,7 +32,6 @@
             background-color: var(--dark-bg);
             padding: 1rem 2rem;
             border-bottom: 3px solid var(--bright-red);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -51,7 +48,6 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
             text-decoration: none;
             color: var(--light-text);
         }
@@ -61,97 +57,127 @@
             color: var(--light-text);
             text-decoration: none;
             font-weight: 700;
-            transition: 0.3s;
             border: 1px solid var(--bright-red);
             padding: 5px 15px;
             border-radius: 4px;
+            transition: 0.3s;
         }
         .btn-back:hover { background: var(--bright-red); }
 
+        /* --- Hero --- */
         .hero-district {
-            background: linear-gradient(rgba(26, 26, 29, 0.85), rgba(26, 26, 29, 0.95)), 
+            background: linear-gradient(rgba(26, 26, 29, 0.8), rgba(26, 26, 29, 0.9)), 
                         url('images/центральный_гл.jpg') center center no-repeat;
             background-size: cover;
-            padding: 5rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
             border-bottom: 5px solid var(--bright-red);
         }
 
         .hero-district h1 {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 6vw, 4rem);
             text-transform: uppercase;
             letter-spacing: 4px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
             margin-bottom: 1rem;
         }
+
+        /* --- Сетка статистики --- */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background: var(--medium-red);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .stat-card h2 { font-size: 2.8rem; font-weight: 900; line-height: 1; margin-bottom: 5px; }
+        .stat-card p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 2rem;
+        }
+
+        .motto-box {
+            background: var(--dark-gray);
+            border-left: 10px solid var(--bright-red);
+            padding: 30px;
+            margin: 20px 0 40px;
+            font-size: 1.2rem;
+            font-style: italic;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
-            color: var(--light-text);
-            font-size: 2.2rem;
+            margin: 4rem 0 2.5rem;
+            font-size: 2rem;
             text-transform: uppercase;
+            border-bottom: 3px solid var(--bright-red);
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
             letter-spacing: 2px;
-            border-bottom: 3px solid var(--medium-red);
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 0.5rem;
+        }
+
+        /* Список заслуг района */
+        .highlight-list {
+            background: rgba(255,255,255,0.05);
+            padding: 35px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid rgba(195, 7, 63, 0.3);
+        }
+        .highlight-list h3 { color: var(--bright-red); margin-bottom: 15px; text-transform: uppercase; }
+        .highlight-list ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .highlight-list li::before {
+            content: "✚";
+            color: var(--bright-red);
+            margin-right: 12px;
+            font-weight: bold;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 25px;
         }
 
         .card {
-            background-color: var(--dark-gray);
+            background-color: #25252b;
             border-radius: 10px;
-            padding: 2rem;
+            padding: 2.5rem;
             border: 1px solid var(--dark-red);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow-color);
-            border-color: var(--bright-red);
-        }
-
-        .card h3 {
-            color: var(--bright-red);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .info-block {
-            background: #222;
-            border: 2px solid var(--bright-red);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 4rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
+        .card:hover { border-color: var(--bright-red); transform: translateY(-5px); }
+        .card h3 { color: var(--bright-red); margin-bottom: 1rem; }
 
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
-            margin-bottom: 4rem;
+            margin: 3rem 0;
         }
 
         .gallery img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             border-radius: 8px;
             filter: grayscale(100%);
@@ -159,23 +185,19 @@
             border: 1px solid var(--dark-gray);
         }
 
-        .gallery img:hover {
-            filter: grayscale(0%);
-            transform: scale(1.05);
-            border-color: var(--bright-red);
-        }
+        .gallery img:hover { filter: grayscale(0%); transform: scale(1.05); border-color: var(--bright-red); }
 
         footer {
-            background-color: var(--dark-bg);
+            background-color: #111;
             padding: 3rem 2rem;
             text-align: center;
             border-top: 3px solid var(--bright-red);
-            margin-top: 4rem;
+            margin-top: 5rem;
         }
 
         @media (max-width: 768px) {
-            .hero-district h1 { font-size: 2rem; }
-            .section-title { font-size: 1.5rem; }
+            .hero-district { padding: 5rem 1rem; }
+            .stats-strip { margin-top: 20px; grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -190,64 +212,82 @@
 
     <section class="hero-district">
         <h1>Центральный район</h1>
-        <p>Госпитальная база и административный центр города</p>
+        <p>Интеллектуальный штаб и милосердный тыл Кузбасса</p>
     </section>
+
+    <div class="stats-strip">
+        <div class="stat-card">
+            <h2>12</h2>
+            <p>Крупнейших госпиталей</p>
+        </div>
+        <div class="stat-card">
+            <h2>376</h2>
+            <p>Стрелковая дивизия</p>
+        </div>
+        <div class="stat-card">
+            <h2>100к+</h2>
+            <p>Спасенных жизней</p>
+        </div>
+    </div>
 
     <div class="container">
         
-        <section>
-            <h2 class="section-title">Введение</h2>
-            <p style="text-align: center; font-size: 1.1rem; max-width: 800px; margin: 0 auto 3rem;">
-                В годы войны Центральный район стал «тыловым фронтом» милосердия. Лучшие здания города — школы, 
-                институты и Дворец Труда — были переоборудованы под эвакогоспитали для лечения бойцов, прибывающих с передовой.
-            </p>
-        </section>
-
-        <div class="info-block">
-            <h3 style="color: var(--bright-red); margin-bottom: 1rem;">Город-госпиталь</h3>
-            <p>В Центральном районе работало <strong>12 крупнейших эвакогоспиталей</strong>, вернувших в строй тысячи солдат Красной Армии.</p>
+        <div class="motto-box">
+            "Центральный район стал местом, где координировалась жизнь всего военного города. Здесь лечили раненых, формировали дивизии и хранили культуру эвакуированного Ленинграда."
         </div>
 
-        <section>
-            <h2 class="section-title">Важнейшие объекты</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Эвакогоспиталь №1246</h3>
-                    <p>Располагался в здании школы №1. Стал одним из первых медицинских учреждений, принявших раненых в 1941 году.</p>
-                </div>
-                <div class="card">
-                    <h3>Штаб управления</h3>
-                    <p>На улице Советской находились ключевые административные органы, координировавшие работу промышленности всего Кузбасса.</p>
-                </div>
-                <div class="card">
-                    <h3>Железнодорожный узел</h3>
-                    <p>Центральная станция обеспечивала бесперебойную отправку эшелонов с углем и прием составов с эвакуированными.</p>
-                </div>
-            </div>
-        </section>
+        <h2 class="section-title">Город-госпиталь</h2>
+        <p style="margin-bottom: 30px; text-align: justify;">
+            С первых месяцев войны лучшие здания центра — школы №1, №12, Дворец Труда и учебные корпуса — были превращены в стерильные палаты. 
+            Центральный район принял на себя основной поток раненых, прибывающих санитарными поездами. Жители района работали санитарами, 
+            сдавали кровь и организовывали концерты для бойцов, поддерживая их дух.
+        </p>
 
-        <section>
-            <h2 class="section-title">Фотоархив центра</h2>
-            <div class="gallery">
-                <img src="images/центр_госпиталь.jpg" alt="Палата раненых">
-                <img src="images/советский_пр_43.jpg" alt="Проспект Советский">
-                <img src="images/центр_добровольцы.jpg" alt="Призывной пункт">
-                <img src="images/дворец_труда_госпиталь.jpg" alt="Дворец Труда">
-            </div>
-        </section>
+        <div class="highlight-list">
+            <h3>Роль района в Победе:</h3>
+            <ul>
+                <li>Формирование 376-й Кузбасско-Псковской дивизии</li>
+                <li>Размещение Александринского театра (Ленинград)</li>
+                <li>Работа областного комитета обороны</li>
+                <li>Снабжение фронта через центральный ж/д узел</li>
+                <li>Научная база для оборонных нужд в институтах</li>
+            </ul>
+        </div>
 
-        <section>
-            <h2 class="section-title">Память</h2>
-            <div class="card" style="text-align: center; max-width: 700px; margin: 0 auto;">
-                <p><strong>Памятник «Героям тыла»:</strong> Воплощение благодарности медикам и жителям центра, превратившим город в надежный оплот спасения жизней.</p>
+        <h2 class="section-title">Важнейшие вехи</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Дворец Труда</h3>
+                <p>В его стенах располагался один из мощнейших госпиталей. Сегодня это символ архитектуры, который в 40-е стал символом спасения тысяч жизней.</p>
             </div>
-        </section>
+            <div class="card">
+                <h3>Улица Советская</h3>
+                <p>Административный нерв города. Именно здесь располагались штабы, принимавшие решения о распределении ресурсов и отправке добровольцев на передовую.</p>
+            </div>
+            <div class="card">
+                <h3>Культурный фронт</h3>
+                <p>Кемерово стал временным домом для деятелей искусства из прифронтовых зон. В центре города продолжалась культурная жизнь, ковавшая веру в Победу.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Фотоархив Центра</h2>
+        <div class="gallery">
+            <img src="images/центр_госпиталь.jpg" alt="Палата раненых">
+            <img src="images/советский_пр_43.jpg" alt="Проспект Советский">
+            <img src="images/центр_добровольцы.jpg" alt="Призывной пункт">
+            <img src="images/дворец_труда_госпиталь.jpg" alt="Дворец Труда">
+        </div>
+
+        <h2 class="section-title">Вечная память</h2>
+        <div class="card" style="text-align: center; max-width: 850px; margin: 0 auto;">
+            <p><strong>Мемориал Славы:</strong> Находясь в самом сердце района, этот памятник напоминает нам о подвиге каждого кемеровчанина — и того, кто ушел в атаку, и того, кто сутками стоял у операционного стола.</p>
+        </div>
 
     </div>
 
     <footer>
         <div class="logo">Кемерово <span>1941-1945</span></div>
-        <p style="margin-top: 10px; opacity: 0.7;">Архив памяти Центрального района. 2024</p>
+        <p style="margin-top: 10px; opacity: 0.7;">Летопись Центрального района. 2026</p>
     </footer>
 
 </body>
