@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ленинский район 1941-1945 — Промышленный хаб</title>
+    <title>Ленинский район — Район Победителей</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,12 +15,7 @@
             --light-text: #f5f5f5;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
         body {
             background-color: var(--dark-bg);
@@ -30,11 +25,11 @@
 
         header {
             background-color: var(--dark-bg);
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             border-bottom: 3px solid var(--bright-red);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .header-content {
@@ -45,12 +40,7 @@
             margin: 0 auto;
         }
         
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--light-text);
-        }
+        .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--light-text); text-transform: uppercase; }
         .logo span { color: var(--bright-red); }
 
         .btn-back {
@@ -58,19 +48,17 @@
             text-decoration: none;
             font-weight: 700;
             border: 1px solid var(--bright-red);
-            padding: 5px 15px;
-            border-radius: 4px;
+            padding: 8px 20px;
+            border-radius: 50px;
             transition: 0.3s;
         }
         .btn-back:hover { background: var(--bright-red); }
 
         /* --- Hero --- */
         .hero-district {
-            background: linear-gradient(rgba(26, 26, 29, 0.8), rgba(26, 26, 29, 0.9)), 
-                        url('images/ленинский_гл.jpg') center center no-repeat;
-            background-size: cover;
-            padding: 8rem 2rem;
+            padding: 6rem 2rem 4rem;
             text-align: center;
+            background: radial-gradient(circle at center, #2a0a10 0%, #1A1A1D 100%);
             border-bottom: 5px solid var(--bright-red);
         }
 
@@ -81,122 +69,82 @@
             margin-bottom: 1rem;
         }
 
-        /* --- Сетка статистики --- */
+        /* --- Stats --- */
         .stats-strip {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             max-width: 1100px;
-            margin: -40px auto 40px;
+            margin: -30px auto 40px;
             padding: 0 20px;
         }
 
         .stat-card {
             background: var(--medium-red);
-            padding: 25px;
+            padding: 20px;
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .stat-card h2 { font-size: 2.8rem; font-weight: 900; line-height: 1; margin-bottom: 5px; }
-        .stat-card p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-card h2 { font-size: 1.8rem; font-weight: 900; }
+        .stat-card p { font-size: 0.75rem; text-transform: uppercase; opacity: 0.9; }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
         .motto-box {
             background: var(--dark-gray);
             border-left: 10px solid var(--bright-red);
             padding: 30px;
-            margin: 20px 0 40px;
-            font-size: 1.2rem;
+            margin: 40px 0;
+            font-size: 1.1rem;
             font-style: italic;
         }
 
         .section-title {
             text-align: center;
-            margin: 4rem 0 2.5rem;
+            margin: 4rem 0 2rem;
             font-size: 2rem;
             text-transform: uppercase;
             border-bottom: 3px solid var(--bright-red);
-            display: inline-block;
-            width: 100%;
+            display: block;
             padding-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        /* Список предприятий */
-        .production-list {
-            background: rgba(255,255,255,0.05);
-            padding: 35px;
-            border-radius: 12px;
-            margin: 30px 0;
-            border: 1px solid rgba(195, 7, 63, 0.2);
-        }
-        .production-list h3 { color: var(--bright-red); margin-bottom: 15px; text-transform: uppercase; }
-        .production-list ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 12px;
-        }
-        .production-list li::before {
-            content: "✓";
-            color: var(--bright-red);
-            margin-right: 10px;
-            font-weight: bold;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
 
         .card {
             background-color: #25252b;
-            border-radius: 10px;
-            padding: 2.5rem;
+            border-radius: 12px;
+            padding: 2rem;
             border: 1px solid var(--dark-red);
             transition: 0.3s;
         }
 
         .card:hover { border-color: var(--bright-red); transform: translateY(-5px); }
-        .card h3 { color: var(--bright-red); margin-bottom: 1rem; }
+        .card h3 { color: var(--bright-red); margin-bottom: 1rem; font-size: 1.3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;}
+        .card p { font-size: 0.95rem; color: #ddd; }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 3rem 0;
+        .memory-block {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/leninskiy_memory.jpg');
+            background-size: cover;
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--bright-red);
+            margin-top: 2rem;
+            text-align: center;
         }
-
-        .gallery img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 8px;
-            filter: grayscale(100%);
-            transition: 0.5s;
-        }
-
-        .gallery img:hover { filter: grayscale(0%); transform: scale(1.05); }
 
         footer {
-            background-color: #111;
+            background-color: #0a0a0b;
             padding: 3rem 2rem;
             text-align: center;
             border-top: 3px solid var(--bright-red);
-            margin-top: 5rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-district { padding: 5rem 1rem; }
-            .stats-strip { margin-top: 20px; grid-template-columns: 1fr; }
+            margin-top: 4rem;
         }
     </style>
 </head>
@@ -211,82 +159,82 @@
 
     <section class="hero-district">
         <h1>Ленинский район</h1>
-        <p>Город заводов и колыбель индустриализации</p>
+        <p>Наследие созидателей и колыбель мирного будущего</p>
     </section>
 
     <div class="stats-strip">
         <div class="stat-card">
-            <h2>11</h2>
-            <p>Эвакуированных заводов</p>
+            <h2>Правый берег</h2>
+            <p>География развития</p>
         </div>
         <div class="stat-card">
-            <h2>16ч</h2>
-            <p>Длительность смены</p>
+            <h2>В.И. Ленин</h2>
+            <p>Имя района</p>
         </div>
         <div class="stat-card">
-            <h2>1941</h2>
-            <p>Начало большой стройки</p>
+            <h2>Район-Победитель</h2>
+            <p>Наследие фронтовиков</p>
         </div>
     </div>
 
     <div class="container">
         
         <div class="motto-box">
-            "Ленинский район — это история о том, как эвакуированные станки начинали работать под открытым небом, пока вокруг них еще возводились стены цехов."
+            "Хотя Ленинский район как отдельная единица сложился после войны, его территория стала домом для тех, кто ковал Победу в заводских цехах и на полях сражений."
         </div>
 
-        <h2 class="section-title">Индустриальный подвиг</h2>
-        <p style="margin-bottom: 30px; text-align: justify;">
-            Территория современного Ленинского района в 1941 году стала ключевой площадкой для размещения промышленности, вывезенной из западных областей СССР. 
-            Здесь ковалась технологическая база для химической и машиностроительной отраслей, ставшая опорой фронта.
-        </p>
-
-        <div class="production-list">
-            <h3>Продукция района для фронта:</h3>
-            <ul>
-                <li>Детали самолетов и танков</li>
-                <li>Изоляционные материалы</li>
-                <li>Оборудование для химзаводов</li>
-                <li>Пластмассовые изделия</li>
-                <li>Средства связи</li>
-                <li>Элементы боеприпасов</li>
-            </ul>
-        </div>
-
-        <h2 class="section-title">Главные предприятия</h2>
+        <h2 class="section-title">Зарождение и Краткая справка</h2>
         <div class="grid">
             <div class="card">
-                <h3>Завод «Химмаш»</h3>
-                <p>Флагман химического машиностроения. В рекордные сроки освоил выпуск сложнейшего оборудования, необходимого для производства пороха и топлива.</p>
+                <h3>История названия</h3>
+                <p>Ленинский район — один из правобережных районов Кемерова. Его название связано с именем В. И. Ленина, следуя традиции называть новые рабочие центры в честь деятелей революции.</p>
             </div>
             <div class="card">
-                <h3>Завод «Карболит»</h3>
-                <p>Производил стратегически важные пластмассы и смолы. Без его продукции было невозможно производство современной авиации и систем навигации.</p>
-            </div>
-            <div class="card">
-                <h3>Трудовой быт</h3>
-                <p>Ленинский район — это еще и история рабочих поселков, где в тяжелейших условиях люди жили и работали ради единой цели — Великой Победы.</p>
+                <h3>От сёл к микрорайонам</h3>
+                <p>Основой стали старые сёла и посёлки правого берега. Постепенно их включали в городскую черту, заменяя частный сектор на современные жилые массивы, школы и больницы.</p>
             </div>
         </div>
 
-        <h2 class="section-title">Фотоархив</h2>
-        <div class="gallery">
-            <img src="images/ленинский_завод1.jpg" alt="Стройка">
-            <img src="images/himmash_42.jpg" alt="Химмаш">
-            <img src="images/leninskiy_workers.jpg" alt="Рабочие">
-            <img src="images/evacuation_train.jpg" alt="Эшелон">
+        <h2 class="section-title">Связь с войной и тылом</h2>
+        <p style="margin-bottom: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+            В 1941–1945 годах здесь жили и трудились тысячи кемеровчан. В то время территория была тесно связана с работой оборонных предприятий, работавших в круглосуточном режиме.
+        </p>
+        <div class="grid">
+            <div class="card">
+                <h3>Трудовой ритм</h3>
+                <p>Жители района — это рабочие легендарных заводов, которые обеспечивали фронт всем необходимым. Позже именно здесь появились улицы, названные в честь героев войны.</p>
+            </div>
+            <div class="card">
+                <h3>Дом для фронтовиков</h3>
+                <p>В послевоенные десятилетия район стал домом для молодых семей фронтовиков и тружеников тыла, которые переселялись из бараков в новые светлые кварталы.</p>
+            </div>
         </div>
 
-        <h2 class="section-title">Память</h2>
-        <div class="card" style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <p><strong>Мемориал труженикам тыла:</strong> Дань уважения тем, кто не жалея сил превратил этот район в мощнейший промышленный узел страны.</p>
+        <h2 class="section-title">Повседневная жизнь и созидание</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Инфраструктура духа</h3>
+                <p>Вместе с жильем строились Дома культуры, спортивные площадки и школы. Район формировался как пространство для мирной жизни поколения победителей.</p>
+            </div>
+            <div class="card">
+                <h3>Традиции поколений</h3>
+                <p>Район развивался как крупный жилой массив со своими традициями, где в каждом дворе жили люди, прошедшие через испытания войны и восстановления страны.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Память сегодня</h2>
+        <div class="memory-block">
+            <h3 style="color: var(--bright-red); margin-bottom: 1rem; font-size: 1.5rem;">Живая история</h3>
+            <p style="max-width: 700px; margin: 0 auto; line-height: 1.8;">
+                Сегодня Ленинский район остается преимущественно жилым, но через его планировку, памятные знаки и названия улиц продолжается память о великом подвиге. Местные истории семей бережно хранят рассказы о тех, кто строил этот город после мая 1945-го.
+            </p>
         </div>
 
     </div>
 
     <footer>
         <div class="logo">Кемерово <span>1941-1945</span></div>
-        <p style="margin-top: 10px; opacity: 0.7;">Страница памяти Ленинского района. 2026</p>
+        <p style="margin-top: 1rem; color: #777; font-size: 0.8rem;">Страница памяти Ленинского района. 2026</p>
     </footer>
 
 </body>

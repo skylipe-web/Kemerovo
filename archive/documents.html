@@ -16,9 +16,7 @@
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Inter', sans-serif; 
         }
 
@@ -34,165 +32,78 @@
             background-color: rgba(18, 18, 20, 0.95);
             padding: 1.2rem 2rem;
             border-bottom: 2px solid var(--accent-red);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: sticky; top: 0; z-index: 1000;
             backdrop-filter: blur(10px);
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1400px; margin: 0 auto;
         }
         
         .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.4rem; font-weight: 700; text-decoration: none;
+            color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;
         }
         .logo span { color: var(--accent-red); }
 
         .btn-back {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 700;
-            border: 1px solid var(--accent-red);
-            padding: 8px 20px;
-            border-radius: 50px;
-            transition: 0.3s;
+            color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 700;
+            border: 1px solid var(--accent-red); padding: 8px 20px; border-radius: 50px; transition: 0.3s;
         }
         .btn-back:hover { background: var(--accent-red); box-shadow: 0 0 15px rgba(195, 7, 63, 0.4); }
 
         /* --- Hero --- */
         .hero {
-            padding: 6rem 2rem 4rem;
-            text-align: center;
+            padding: 6rem 2rem 4rem; text-align: center;
             background: radial-gradient(circle at center, #2a0a10 0%, #121214 100%);
         }
 
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-        }
-
-        .hero p {
-            color: var(--text-dim);
-            max-width: 700px;
-            margin: 0 auto;
-        }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 5px; }
+        .hero p { color: var(--text-dim); max-width: 700px; margin: 0 auto; }
 
         /* --- Сетка карточек --- */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem 5rem;
-        }
-
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem 5rem; }
         .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            align-items: stretch;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem; align-items: stretch;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg); border-radius: 16px; padding: 2.5rem;
+            display: flex; flex-direction: column; justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease;
+            position: relative; overflow: hidden;
         }
 
         .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--accent-red);
-            transition: 0.3s;
+            content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--accent-red); transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(195, 7, 63, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            background: #252529;
-        }
-
-        .card:hover::before {
-            width: 8px;
-        }
+        .card:hover { transform: translateY(-10px); border-color: rgba(195, 7, 63, 0.3); background: #252529; }
+        .card:hover::before { width: 8px; }
 
         .card-meta {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-red);
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
+            font-size: 0.75rem; font-weight: 700; color: var(--accent-red);
+            text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px;
         }
 
-        .card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            color: #fff;
-        }
-
-        .card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
+        .card h2 { font-size: 1.5rem; margin-bottom: 1rem; line-height: 1.2; color: #fff; }
+        .card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 2rem; flex-grow: 1; }
 
         .card-link {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            border: 1px solid rgba(195, 7, 63, 0.3);
-            padding: 10px 15px;
-            border-radius: 8px;
-            justify-content: center;
+            text-decoration: none; color: var(--text-main); font-weight: 700;
+            display: inline-flex; align-items: center; gap: 10px; font-size: 0.9rem;
+            transition: 0.3s; border: 1px solid rgba(195, 7, 63, 0.3);
+            padding: 10px 15px; border-radius: 8px; justify-content: center;
         }
 
-        .card-link:hover {
-            background: var(--accent-red);
-            color: #fff;
-        }
+        .card-link:hover { background: var(--accent-red); color: #fff; }
 
-        /* --- Футер --- */
-        footer {
-            padding: 4rem 2rem;
-            background: #0a0a0b;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
+        footer { padding: 4rem 2rem; background: #0a0a0b; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
 
-        @media (max-width: 768px) {
-            .resources-grid {
-                grid-template-columns: 1fr;
-            }
-            .container { padding: 0 1.5rem; }
-        }
+        @media (max-width: 768px) { .resources-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -206,7 +117,7 @@
 
     <section class="hero">
         <h1>Архивные Документы</h1>
-        <p>Свидетельства эпохи: официальные постановления, фронтовая переписка и свидетельства героического труда.</p>
+        <p>Коллекция отсканированных подлинников: от секретных приказов до личных дневников кемеровчан.</p>
     </section>
 
     <div class="container">
@@ -214,38 +125,56 @@
             
             <div class="card">
                 <div>
-                    <span class="card-meta">Постановление ГКО</span>
-                    <h2>Приказ об эвакуации</h2>
-                    <p>Исторический документ Госкомитета обороны о немедленном размещении производственных мощностей в Кемерово.</p>
+                    <span class="card-meta">Промышленность</span>
+                    <h2>Рапорт о выпуске снарядов</h2>
+                    <p>Сводный отчет завода №606 о перевыполнении плана производства боеприпасов для нужд Сталинградского фронта.</p>
                 </div>
-                <a href="../images/doc_prikaz_full.jpg" target="_blank" class="card-link">Открыть оригинал →</a>
+                <a href="documents/report_shells_1942.pdf" target="_blank" class="card-link">Открыть PDF (2.4 МБ) →</a>
             </div>
 
             <div class="card">
                 <div>
-                    <span class="card-meta">Пресса 1945</span>
-                    <h2>Газета «Кузбасс»</h2>
-                    <p>Легендарный выпуск от 10 мая 1945 года. Тексты обращений и первые вести о Великой Победе.</p>
+                    <span class="card-meta">Трудовой фронт</span>
+                    <h2>Карточки «Двухсотников»</h2>
+                    <p>Списки рабочих Коксохимического завода, выполнявших по две нормы в смену под лозунгом «Все для фронта».</p>
                 </div>
-                <a href="../images/doc_gazeta_full.jpg" target="_blank" class="card-link">Читать выпуск →</a>
+                <a href="documents/workers_list_koks.jpg" target="_blank" class="card-link">Смотреть документ →</a>
             </div>
 
             <div class="card">
                 <div>
-                    <span class="card-meta">Личная переписка</span>
-                    <h2>Фронтовое письмо</h2>
-                    <p>Трогательное послание рабочего завода «Карболит» своей семье. Живая история человеческих судеб.</p>
+                    <span class="card-meta">Госпитали</span>
+                    <h2>Журнал учета раненых</h2>
+                    <p>Выписки из архива эвакогоспиталя №1241 (школа №19), фиксирующие истории выздоровления бойцов.</p>
                 </div>
-                <a href="../images/doc_pismo_full.jpg" target="_blank" class="card-link">Читать письмо →</a>
+                <a href="documents/hospital_log_1241.pdf" target="_blank" class="card-link">Изучить архив →</a>
             </div>
 
             <div class="card">
                 <div>
-                    <span class="card-meta">Служебная справка</span>
-                    <h2>Нормы снабжения</h2>
-                    <p>Архивные данные о распределении продовольственных ресурсов среди рабочих оборонных предприятий города.</p>
+                    <span class="card-meta">Городской быт</span>
+                    <h2>Приказ о светомаскировке</h2>
+                    <p>Официальное распоряжение горисполкома Кемерова о введении режима полной темноты в ночное время.</p>
                 </div>
-                <a href="../images/doc_norma_full.jpg" target="_blank" class="card-link">Изучить данные →</a>
+                <a href="documents/light_masking_order.jpg" target="_blank" class="card-link">Открыть оригинал →</a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="card-meta">Культура и дух</span>
+                    <h2>Афиши театров 1943</h2>
+                    <p>Репертуар кемеровских театров военного времени, собиравших залы даже в самые тяжелые месяцы войны.</p>
+                </div>
+                <a href="documents/theatre_afisha_1943.jpg" target="_blank" class="card-link">Посмотреть афиши →</a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="card-meta">Личная история</span>
+                    <h2>Письма из Сталинграда</h2>
+                    <p>Оцифрованная коллекция треугольников, отправленных кемеровчанами-добровольцами 22-й гвардейской дивизии.</p>
+                </div>
+                <a href="https://pismapobedy.ru/" target="_blank" class="card-link">Читать письма →</a>
             </div>
 
         </div>
@@ -253,7 +182,7 @@
 
     <footer>
         <div class="logo">Кемерово <span>1941-1945</span></div>
-        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.8rem;">Историко-документальный архив проекта. 2026</p>
+        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.8rem;">Научно-просветительский архив. Обновлено в 2026 году.</p>
     </footer>
 
 </body>

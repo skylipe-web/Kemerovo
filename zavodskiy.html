@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Заводский район 1941-1945 — Кузница Победы</title>
+    <title>Заводский район 1941-1945 — Индустриальное сердце</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -66,7 +66,7 @@
 
         /* --- Hero --- */
         .hero-district {
-            background: linear-gradient(rgba(26, 26, 29, 0.8), rgba(26, 26, 29, 0.9)), 
+            background: linear-gradient(rgba(26, 26, 29, 0.85), rgba(26, 26, 29, 0.95)), 
                         url('images/заводской_гл.jpg') center center no-repeat;
             background-size: cover;
             padding: 8rem 2rem;
@@ -81,7 +81,7 @@
             margin-bottom: 1rem;
         }
 
-        /* --- Сетка статистики (Наполнение) --- */
+        /* --- Сетка статистики --- */
         .stats-strip {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -99,7 +99,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .stat-card h2 { font-size: 2.5rem; font-weight: 900; }
+        .stat-card h2 { font-size: 2.2rem; font-weight: 900; }
         .stat-card p { font-size: 0.8rem; text-transform: uppercase; opacity: 0.9; }
 
         .container {
@@ -111,7 +111,7 @@
         .section-title {
             text-align: center;
             margin: 4rem 0 2rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
             text-transform: uppercase;
             border-bottom: 3px solid var(--bright-red);
             display: inline-block;
@@ -119,13 +119,12 @@
             padding-bottom: 10px;
         }
 
-        /* Блок с акцентом */
         .motto-box {
             background: var(--dark-gray);
             border-left: 10px solid var(--bright-red);
             padding: 30px;
             margin: 40px 0;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-style: italic;
         }
 
@@ -144,45 +143,22 @@
         }
 
         .card:hover { border-color: var(--bright-red); transform: translateY(-5px); }
-        .card h3 { color: var(--bright-red); margin-bottom: 1rem; }
+        .card h3 { color: var(--bright-red); margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .card .subtitle { color: #aaa; font-size: 0.85rem; margin-bottom: 1rem; display: block; font-weight: bold; }
 
-        /* Список продукции */
-        .production-list {
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
+        /* Памятные места */
+        .memory-place {
+            background: rgba(195, 7, 63, 0.1);
+            border: 1px dashed var(--bright-red);
+            padding: 2rem;
             border-radius: 10px;
-            margin-top: 20px;
-        }
-        .production-list ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-        }
-        .production-list li::before {
-            content: "•";
-            color: var(--bright-red);
-            font-weight: bold;
-            margin-right: 10px;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 3rem 0;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            filter: grayscale(100%);
-            transition: 0.5s;
-        }
-
-        .gallery img:hover { filter: grayscale(0%); transform: scale(1.03); }
+        .memory-place i { font-size: 3rem; color: var(--bright-red); }
 
         footer {
             background-color: #111;
@@ -194,7 +170,7 @@
 
         @media (max-width: 768px) {
             .hero-district { padding: 4rem 1rem; }
-            .stats-strip { margin-top: 20px; }
+            .memory-place { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -209,67 +185,73 @@
 
     <section class="hero-district">
         <h1>Заводский район</h1>
-        <p>Индустриальная крепость и гордость города</p>
+        <p>Индустриальное сердце Кемерова и кузница великой Победы</p>
     </section>
 
     <div class="stats-strip">
         <div class="stat-card">
-            <h2>12</h2>
-            <p>Крупных заводов</p>
+            <h2>26.03.45</h2>
+            <p>Дата образования</p>
         </div>
         <div class="stat-card">
-            <h2>24/7</h2>
-            <p>Работа в три смены</p>
+            <h2>Орден Ленина</h2>
+            <p>Высшая награда заводов</p>
         </div>
         <div class="stat-card">
-            <h2>300%</h2>
-            <p>Нормы выработки</p>
+            <h2>10-12 ч.</h2>
+            <p>Рабочая смена</p>
         </div>
     </div>
 
     <div class="container">
         
         <div class="motto-box">
-            "В глубоком тылу, за тысячи километров от линии фронта, здесь ковалась стальная мощь, сокрушившая врага."
+            Район сложился вокруг гигантов промышленности: коксохимического, азотно-тукового и механического заводов. Именно здесь в годы войны создавалась основная часть оборонной мощи города.
         </div>
 
-        <h2 class="section-title">Вклад в оборону</h2>
-        <p style="margin-bottom: 2rem;">Заводский район стал домом для эвакуированных предприятий из Москвы, Харькова и других городов. В кратчайшие сроки, буквально в чистом поле, возводились цеха, которые уже через месяц начинали отгрузку боеприпасов.</p>
-
-        <div class="production-list">
-            <h3 style="margin-bottom: 15px; color: var(--bright-red);">Что производил район:</h3>
-            <ul>
-                <li>Снаряды для «Катюш»</li>
-                <li>Броня для Т-34</li>
-                <li>Авиационное оборудование</li>
-                <li>Детали двигателей</li>
-                <li>Взрывчатые вещества</li>
-                <li>Электрооборудование</li>
-            </ul>
-        </div>
-
-        <h2 class="section-title">Главные заводы</h2>
+        <h2 class="section-title">Главные заводы Победы</h2>
         <div class="grid">
             <div class="card">
-                <h3>Завод №606</h3>
-                <p>Ведущее оборонное предприятие, где работали тысячи кемеровчан. Именно здесь ковался основной запас снарядов для артиллерии.</p>
+                <h3>Коксохимический завод</h3>
+                <span class="subtitle">Ныне ОАО «Кокс»</span>
+                <p>Давал стратегически важный кокс для металлургии страны. За героический труд коллектив был награжден орденом Ленина и получил на вечное хранение Красное знамя ГКО.</p>
             </div>
             <div class="card">
-                <h3>Кемеровская ГРЭС</h3>
-                <p>Единственный источник энергии, который поддерживал жизнь во всех цехах района. Подвиг энергетиков был не менее важен, чем труд станочников.</p>
+                <h3>Азотно-туковый завод</h3>
+                <span class="subtitle">Ныне ООО ПО «Химпром»</span>
+                <p>Первенец «большой химии» Сибири. В годы войны выпускал взрывчатые вещества и компоненты для снарядов. Награжден орденом Ленина за вклад в разгром врага.</p>
             </div>
             <div class="card">
-                <h3>Электромашина</h3>
-                <p>Завод, созданный на базе эвакуированного оборудования, выпускал сложнейшую технику для нужд танковых войск.</p>
+                <h3>Механический завод</h3>
+                <span class="subtitle">Завод №606</span>
+                <p>Принял оборудование эвакуированного завода №510. Был полностью перепрофилирован с выпуска гражданских вагонеток на массовое производство снарядов и боеприпасов.</p>
+            </div>
+            <div class="card">
+                <h3>Завод «Карболит»</h3>
+                <span class="subtitle">Эвакуирован из Орехово-Зуево</span>
+                <p>Был смонтирован в рекордные сроки. Уже 3 февраля 1942 года, спустя всего 2 месяца после прибытия, выдал первую военную продукцию.</p>
             </div>
         </div>
 
-        <h2 class="section-title">Галерея памяти</h2>
-        <div class="gallery">
-            <img src="images/заводской_цех.jpg" alt="Цех">
-            <img src="images/заводской_грэс.jpg" alt="ГРЭС">
-            <img src="images/заводской_рабочие.jpg" alt="Рабочие">
-            <img src="images/заводской_сталь.jpg" alt="Сталь">
+        <h2 class="section-title">Трудовой подвиг и люди</h2>
+        <p>На предприятиях Заводского района широко развернулось стахановское движение. Рабочие перевыполняли нормы на 200-300%, работая на износ ради одной цели. Тысячи заводчан были награждены медалями «За доблестный труд в Великой Отечественной войне».</p>
+        
+        <div class="motto-box" style="border-left-color: var(--light-text); background: var(--dark-red);">
+            «Уходили на фронт целыми семьями — с коксохима и механического завода на передовую уходили братья, отцы и сыновья, сменяя заводской станок на винтовку».
+        </div>
+
+        <h2 class="section-title">Память района</h2>
+        <div class="memory-place">
+            <div style="font-size: 2.5rem;">📍</div>
+            <div>
+                <h3>Стела «Скорбящая мать»</h3>
+                <p>Расположена на ул. Карболитовская, 7. Это главный мемориал района, посвященный заводчанам — фронтовикам и труженикам тыла, не вернувшимся с полей сражений.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 10px;">
+            <h3 style="color: var(--bright-red); margin-bottom: 1rem;">Район сегодня</h3>
+            <p>Заводский район остается индустриальным ядром Кемерова. Здесь сосредоточены транспортные узлы, Новокемеровская ТЭЦ и десятки действующих предприятий. Память о войне живет не только в мемориалах, но и в названиях улиц и самом характере этого рабочего района.</p>
         </div>
 
     </div>

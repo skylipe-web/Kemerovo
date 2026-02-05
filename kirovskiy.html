@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кировский район 1941-1945 — Оборонный щит</title>
+    <title>Кировский район 1941-1945 — Пороховой щит</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,12 +15,7 @@
             --light-text: #f5f5f5;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
         body {
             background-color: var(--dark-bg);
@@ -30,11 +25,11 @@
 
         header {
             background-color: var(--dark-bg);
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             border-bottom: 3px solid var(--bright-red);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .header-content {
@@ -45,12 +40,7 @@
             margin: 0 auto;
         }
         
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--light-text);
-        }
+        .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--light-text); text-transform: uppercase; }
         .logo span { color: var(--bright-red); }
 
         .btn-back {
@@ -58,19 +48,17 @@
             text-decoration: none;
             font-weight: 700;
             border: 1px solid var(--bright-red);
-            padding: 5px 15px;
-            border-radius: 4px;
+            padding: 8px 20px;
+            border-radius: 50px;
             transition: 0.3s;
         }
         .btn-back:hover { background: var(--bright-red); }
 
         /* --- Hero --- */
         .hero-district {
-            background: linear-gradient(rgba(26, 26, 29, 0.8), rgba(26, 26, 29, 0.9)), 
-                        url('images/кировский_гл.jpg') center center no-repeat;
-            background-size: cover;
-            padding: 8rem 2rem;
+            padding: 6rem 2rem 4rem;
             text-align: center;
+            background: radial-gradient(circle at center, #2a0a10 0%, #1A1A1D 100%);
             border-bottom: 5px solid var(--bright-red);
         }
 
@@ -81,125 +69,90 @@
             margin-bottom: 1rem;
         }
 
-        /* --- Сетка статистики (Наполнение) --- */
+        /* --- Stats --- */
         .stats-strip {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             max-width: 1100px;
-            margin: -40px auto 40px;
+            margin: -30px auto 40px;
             padding: 0 20px;
         }
 
         .stat-card {
             background: var(--medium-red);
-            padding: 25px;
+            padding: 20px;
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .stat-card h2 { font-size: 2.8rem; font-weight: 900; line-height: 1; margin-bottom: 5px; }
-        .stat-card p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-card h2 { font-size: 1.8rem; font-weight: 900; }
+        .stat-card p { font-size: 0.75rem; text-transform: uppercase; opacity: 0.9; }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
         .motto-box {
             background: var(--dark-gray);
             border-left: 10px solid var(--bright-red);
             padding: 30px;
-            margin: 20px 0 40px;
-            font-size: 1.2rem;
-            font-style: italic;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            margin: 40px 0;
+            font-size: 1.1rem;
         }
 
         .section-title {
             text-align: center;
-            margin: 4rem 0 2.5rem;
+            margin: 4rem 0 2rem;
             font-size: 2rem;
             text-transform: uppercase;
             border-bottom: 3px solid var(--bright-red);
-            display: inline-block;
-            width: 100%;
+            display: block;
             padding-bottom: 10px;
-            letter-spacing: 2px;
         }
 
-        /* Список продукции */
-        .production-list {
-            background: rgba(255,255,255,0.05);
-            padding: 35px;
-            border-radius: 12px;
-            margin: 30px 0;
-            border: 1px solid rgba(195, 7, 63, 0.2);
-        }
-        .production-list ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .production-list li::before {
-            content: "▶";
-            color: var(--bright-red);
-            margin-right: 15px;
-            font-size: 0.8rem;
-        }
-
+        /* Сетка карточек */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
 
         .card {
             background-color: #25252b;
-            border-radius: 10px;
-            padding: 2.5rem;
+            border-radius: 12px;
+            padding: 2rem;
             border: 1px solid var(--dark-red);
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: 0.3s;
         }
 
-        .card:hover { border-color: var(--bright-red); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
-        .card h3 { color: var(--bright-red); margin-bottom: 1rem; font-size: 1.4rem; }
+        .card:hover { border-color: var(--bright-red); transform: translateY(-5px); }
+        .card h3 { color: var(--bright-red); margin-bottom: 1rem; font-size: 1.3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;}
+        .card p { font-size: 0.95rem; color: #ddd; }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 3rem 0;
+        /* Специальный блок для образования */
+        .edu-block {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border-right: 5px solid var(--bright-red);
+            margin-top: 20px;
         }
 
-        .gallery img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 8px;
-            filter: grayscale(100%);
-            transition: 0.5s;
-            border: 1px solid var(--dark-gray);
-        }
-
-        .gallery img:hover { filter: grayscale(0%); transform: scale(1.05); border-color: var(--bright-red); }
+        .edu-icon { font-size: 3rem; margin-right: 2rem; color: var(--bright-red); }
 
         footer {
-            background-color: #111;
+            background-color: #0a0a0b;
             padding: 3rem 2rem;
             text-align: center;
             border-top: 3px solid var(--bright-red);
-            margin-top: 5rem;
+            margin-top: 4rem;
         }
 
         @media (max-width: 768px) {
-            .hero-district { padding: 5rem 1rem; }
-            .stats-strip { margin-top: 20px; grid-template-columns: 1fr; }
-            .motto-box { font-size: 1rem; }
+            .edu-block { flex-direction: column; text-align: center; }
+            .edu-icon { margin-right: 0; margin-bottom: 1rem; }
         }
     </style>
 </head>
@@ -214,82 +167,84 @@
 
     <section class="hero-district">
         <h1>Кировский район</h1>
-        <p>Пороховой щит Родины и герои химии</p>
+        <p>Правобережный оборонный щит города: химия, порох и трудовая доблесть</p>
     </section>
 
     <div class="stats-strip">
         <div class="stat-card">
-            <h2>319</h2>
-            <p>Номер завода «Коммунар»</p>
+            <h2>5 дек 1934</h2>
+            <p>Дата основания района</p>
         </div>
         <div class="stat-card">
-            <h2>1/3</h2>
-            <p>Зарядов всей артиллерии</p>
+            <h2>1/3 всего пороха</h2>
+            <p>Вклад района в фронт</p>
         </div>
         <div class="stat-card">
-            <h2>1943</h2>
-            <p>Год трудового рекорда</p>
+            <h2>1943 год</h2>
+            <p>Первые военные дипломы</p>
         </div>
     </div>
 
     <div class="container">
         
         <div class="motto-box">
-            "Работа в Кировском была сродни передовой: здесь каждый грамм продукции требовал предельной концентрации, ведь химия войны не прощала ошибок."
+            <strong>Краткая справка:</strong> Район вырос на правом берегу Томи вокруг оборонных предприятий, начатых еще в первые пятилетки. Свое имя он получил в 1934 году в честь С.М. Кирова, став центром индустриальной мощи правобережья.
         </div>
 
-        <h2 class="section-title">Огненный арсенал</h2>
-        <p style="margin-bottom: 20px; text-align: justify;">
-            Кировский район в годы войны стал синонимом слова «заряд». Главное предприятие района — завод «Коммунар» — работало в беспрецедентном ритме. 
-            Пока на фронте шли бои, здесь, в тылу, женщины и подростки вручную смешивали опасные составы, чтобы обеспечить артиллерию и легендарные «Катюши» необходимым топливом.
-        </p>
-
-        <div class="production-list">
-            <h3 style="color: var(--bright-red); text-transform: uppercase; letter-spacing: 1px;">Фронтовая химия района:</h3>
-            <ul>
-                <li>Пироксилиновый порох</li>
-                <li>Заряды для минометов</li>
-                <li>Топливо для реактивных снарядов</li>
-                <li>Химические реагенты</li>
-                <li>Медицинские препараты</li>
-                <li>Горючие смеси</li>
-            </ul>
-        </div>
-
-        <h2 class="section-title">Стратегические объекты</h2>
+        <h2 class="section-title">История создания и стройка</h2>
         <div class="grid">
             <div class="card">
-                <h3>Завод «Коммунар»</h3>
-                <p>Сердце района. За годы войны производство выросло в разы. За самоотверженный труд завод был награжден государственными орденами.</p>
+                <h3>Тайга и болота</h3>
+                <p>В начале 1930-х между деревнями Евсеево и Боровушка началось возведение химгиганта — будущего объединения «Прогресс». Это была стройка в тяжелейших условиях непроходимых лесов.</p>
             </div>
             <div class="card">
-                <h3>Защита неба (ПВО)</h3>
-                <p>Из-за взрывоопасности производств, район охранялся зенитными полками. Здесь располагались точки наблюдения за воздушным пространством Кузбасса.</p>
-            </div>
-            <div class="card">
-                <h3>Подвиг в тылу</h3>
-                <p>Труд кировчан проходил в условиях строжайшей секретности и постоянного риска. Многие рабочие жили прямо в цехах, экономя время на дорогу.</p>
+                <h3>Первая инфраструктура</h3>
+                <p>Вокруг стройки быстро вырос рабочий посёлок: от землянок и бараков до первой школы №35, поликлиники и почты. Район формировался как единый организм с заводами.</p>
             </div>
         </div>
 
-        <h2 class="section-title">Архивные кадры</h2>
-        <div class="gallery">
-            <img src="images/кировский_коммунар.jpg" alt="Завод Коммунар">
-            <img src="images/кировский_набережная.jpg" alt="Берег Томи">
-            <img src="images/кировский_смена.jpg" alt="Рабочие">
-            <img src="images/кировский_пво.jpg" alt="Зенитчики">
+        <h2 class="section-title">Район в годы войны</h2>
+        <div style="margin-bottom: 3rem;">
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">В 1941–1945 гг. заводы района стали ключевым звеном оборонки. Сюда эвакуировали предприятия из Подмосковья и Донбасса. Главная гордость — производство <strong>трети всего пороха</strong> для фронта.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Завод «Прогресс»</h3>
+                    <p>Крупнейшее химическое объединение, работавшее на нужды фронта в круглосуточном режиме.</p>
+                </div>
+                <div class="card">
+                    <h3>Завод «Коммунар»</h3>
+                    <p>Оборонное предприятие, обеспечивавшее армию боеприпасами и спецпродукцией.</p>
+                </div>
+                <div class="card">
+                    <h3>Кемеровская ТЭЦ</h3>
+                    <p>Энергетическое сердце района, без которого была бы невозможна работа заводов-гигантов.</p>
+                </div>
+                <div class="card">
+                    <h3>АКЗ и Мехзавод</h3>
+                    <p>Предприятия, перепрофилированные на выпуск военной продукции в кратчайшие сроки.</p>
+                </div>
+            </div>
         </div>
 
-        <h2 class="section-title">Память поколений</h2>
-        <div class="card" style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <p>Сегодня мемориальный комплекс в Кировском районе — это место тишины и благодарности тем, кто обеспечил огненную мощь нашей Победы.</p>
+        <h2 class="section-title">Учёба и госпитали</h2>
+        <div class="edu-block">
+            <div class="edu-icon">🎓</div>
+            <div>
+                <h3 style="color: var(--bright-red); margin-bottom: 0.5rem;">Химико-технологический техникум</h3>
+                <p>Открылся в 1939 году (ныне Сибирский политехнический). В войну часть здания отдали под госпиталь. Студенты учились и работали одновременно — первые выпуски состоялись уже в 1943 году, а многие преподаватели ушли добровольцами на фронт.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Память и современность</h2>
+        <div style="background: var(--dark-red); padding: 2rem; border-radius: 12px; margin-top: 2rem; text-align: center;">
+            <p>Сегодня Кировский район бережно хранит историю своего трудового подвига. Память о войне живет в названиях улиц, в мемориалах у проходных заводов и в историях династий, которые продолжают работать на благо города, сохраняя статус района как крупного промышленного центра.</p>
         </div>
 
     </div>
 
     <footer>
         <div class="logo">Кемерово <span>1941-1945</span></div>
-        <p style="margin-top: 10px; opacity: 0.7;">Летопись Кировского района. 2026</p>
+        <p style="margin-top: 1rem; color: #777; font-size: 0.8rem;">Летопись Кировского района. 2026</p>
     </footer>
 
 </body>
